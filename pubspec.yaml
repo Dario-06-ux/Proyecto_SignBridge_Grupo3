@@ -1,0 +1,39 @@
+name: detector_senas
+description: SignBridge AI - Chatbot de Alfabetización en Lengua de Señas.
+publish_to: 'none'
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  
+  # UI e Íconos
+  cupertino_icons: ^1.0.8
+  
+  # Gestor de Estado (Riverpod) - ¡Crucial para un buen rendimiento!
+  flutter_riverpod: ^2.5.1
+  
+  # Cámara y Permisos
+  camera: ^0.10.5+9
+  permission_handler: ^11.3.1
+
+  # On-device inference (optional classifier; see assets/models/README_MODELS.txt)
+  tflite_flutter: ^0.11.0
+
+  # YUV420 → JPEG for MediaPipe bridge (Android)
+  image: ^4.5.4
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.0
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/models/
+    - assets/gifs/

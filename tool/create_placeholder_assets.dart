@@ -1,0 +1,17 @@
+// One-off: writes minimal valid 1x1 GIFs for local dev. Run: dart run tool/create_placeholder_assets.dart
+import 'dart:io';
+
+void main() {
+  const gifBytes = <int>[
+    0x47, 0x49, 0x46, 0x38, 0x39, 0x61, 0x01, 0x00, 0x01, 0x00, 0x80, 0x00, 0x00, //
+    0xff, 0xff, 0xff, 0x21, 0xf9, 0x04, 0x01, 0x00, 0x00, 0x00, 0x00, 0x2c, 0x00, //
+    0x00, 0x00, 0x00, 0x01, 0x00, 0x01, 0x00, 0x00, 0x02, 0x02, 0x44, 0x01, 0x00, 0x3b,
+  ];
+  final root = Directory.current;
+  final gifs = Directory('${root.path}/assets/gifs');
+  gifs.createSync(recursive: true);
+  for (final name in ['hola.gif', 'gracias.gif', 'por_favor.gif', 'ayuda.gif']) {
+    File('${gifs.path}/$name').writeAsBytesSync(gifBytes, flush: true);
+  }
+  stdout.writeln('Wrote placeholder GIFs to ${gifs.path}');
+}
